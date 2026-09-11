@@ -23,7 +23,7 @@ final class PostDetailViewModel {
     
     func getComments() {
         manager.request(model: [Comments].self,
-                        endpoint: "comments") { comments, error in
+                        endpoint: .comment) { comments, error in
             if let error {
                 self.error?(error)
             } else if let comments {

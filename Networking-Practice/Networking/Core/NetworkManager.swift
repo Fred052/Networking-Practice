@@ -13,11 +13,11 @@ class NetworkManager {
     let baseURL = "https://jsonplaceholder.typicode.com/"
     
     func request<T: Codable>(model: T.Type,
-                             endpoint: String,
+                             endpoint: Endpoint,
                              method: HTTPMethod = .get,
                              completion: @escaping (T?, String?) -> Void) {
         
-        AF.request("\(baseURL)\(endpoint)", method: method).responseData { response in
+        AF.request("\(baseURL)\(endpoint.rawValue)", method: method).responseData { response in
             switch response.result {
             case .success(let data):
                 do {

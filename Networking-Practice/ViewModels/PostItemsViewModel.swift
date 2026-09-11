@@ -17,7 +17,7 @@ final class PostItemsViewModel {
     
     func getdata() {
         manager.request(model: [PostItems].self,
-                        endpoint: "posts") { data, error in
+                        endpoint: .post) { data, error in
             if let error {
                 self.error?(error)
             } else if let  data {

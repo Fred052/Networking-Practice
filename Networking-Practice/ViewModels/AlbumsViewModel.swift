@@ -23,7 +23,7 @@ final class AlbumsViewModel {
     
     func getAlbums() {
         manager.request(model: [Albums].self,
-                        endpoint: "albums") { albums, error in
+                        endpoint: .album) { albums, error in
             if let error {
                 self.error?(error)
             } else if let albums {
