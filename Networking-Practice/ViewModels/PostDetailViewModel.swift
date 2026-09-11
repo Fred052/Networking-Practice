@@ -22,8 +22,8 @@ final class PostDetailViewModel {
     }
     
     func getComments() {
-        guard let postId = item.id else { return }
-        manager.getComments(postId: postId) { comments, error in
+        manager.request(model: [Comments].self,
+                        endpoint: "comments") { comments, error in
             if let error {
                 self.error?(error)
             } else if let comments {

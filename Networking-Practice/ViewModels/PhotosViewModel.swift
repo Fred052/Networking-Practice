@@ -22,7 +22,7 @@ final class PhotosViewModel {
     }
     
     func getPhotos() {
-        manager.getPhotos { photos, error in
+        manager.requestPhotos(model: [Photos].self, url: "https://picsum.photos/v2/list") { photos, error in
             if let error {
                 self.error?(error)
             } else if let photos {

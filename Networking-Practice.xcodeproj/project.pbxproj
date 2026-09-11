@@ -20,7 +20,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				Views/Untitled.swift,
 			);
 			target = 7F717EB2304C175300728F66 /* Networking-Practice */;
 		};

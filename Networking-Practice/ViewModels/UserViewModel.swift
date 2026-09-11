@@ -22,7 +22,8 @@ final class UserViewModel {
     }
 
     func getUsers() {
-        manager.getUsers { users, error in
+        manager.request(model: [Users].self,
+                        endpoint: "users")  { users, error in
             if let error {
                 self.error?(error)
             } else if let users {
