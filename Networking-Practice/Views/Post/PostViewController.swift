@@ -21,11 +21,18 @@ class PostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Posts"
         
+        configureUI()
         setupView()
         configureViewModel()
+    }
+    
+    func configureUI() {
+        title = "Posts"
+        view.backgroundColor = .white
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
     
     func setupView() {
@@ -46,6 +53,10 @@ class PostViewController: UIViewController {
         viewModel.error = { message in
             print(message)
         }
+    }
+    
+    @objc func addTapped() {
+        viewModel.addNewItem(title: "post1", body: "Hello")
     }
 }
 

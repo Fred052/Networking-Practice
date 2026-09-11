@@ -8,6 +8,10 @@
 import Foundation
 import Alamofire
 
+enum EncodingType {
+    case url, json
+}
+
 class NetworkManager {
     
     let baseURL = "https://jsonplaceholder.typicode.com/"
@@ -15,9 +19,14 @@ class NetworkManager {
     func request<T: Codable>(model: T.Type,
                              endpoint: Endpoint,
                              method: HTTPMethod = .get,
+                             parameter: Parameters? = nil,
+                             encoding: EncodingType = .url,
                              completion: @escaping (T?, String?) -> Void) {
         
-        AF.request("\(baseURL)\(endpoint.rawValue)", method: method).responseData { response in
+        AF.request("\(baseURL)\(endpoint.rawValue)",
+                   method: method,
+                   encoding: encoding == .url ? URLEncoding.default : JSONEncoding.default
+        ).responseData { response in
             switch response.result {
             case .success(let data):
                 do {
